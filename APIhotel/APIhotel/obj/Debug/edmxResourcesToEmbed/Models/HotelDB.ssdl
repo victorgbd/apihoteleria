@@ -1,0 +1,1243 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hoteleriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="alojamiento">
+    <Key>
+      <PropertyRef Name="id_alojamiento" />
+    </Key>
+    <Property Name="id_alojamiento" Type="int" Nullable="false" />
+    <Property Name="id_reserv_alojamiento" Type="int" Nullable="false" />
+    <Property Name="ing_por_alojamiento" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_i_alojamiento" Type="datetime" Nullable="false" />
+    <Property Name="sal_por_alojamiento" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_s_alojamiento" Type="datetime" Nullable="false" />
+    <Property Name="estado_alojamiento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="alojamiento_det">
+    <Key>
+      <PropertyRef Name="id_alojamiento_det" />
+      <PropertyRef Name="id_hab_det" />
+    </Key>
+    <Property Name="id_alojamiento_det" Type="int" Nullable="false" />
+    <Property Name="id_hab_det" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="archivo">
+    <Key>
+      <PropertyRef Name="id_archivo" />
+      <PropertyRef Name="id_tarchivo" />
+      <PropertyRef Name="ruta_archivo" />
+      <PropertyRef Name="comentario_01_archivo" />
+      <PropertyRef Name="comentario_02_archivo" />
+      <PropertyRef Name="estado_archivo" />
+      <PropertyRef Name="CREADO_P_archivo" />
+      <PropertyRef Name="FECHA_C_archivo" />
+      <PropertyRef Name="MOD_P_archivo" />
+      <PropertyRef Name="FECHA_M_archivo" />
+    </Key>
+    <Property Name="id_archivo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="id_tarchivo" Type="int" Nullable="false" />
+    <Property Name="ruta_archivo" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="comentario_01_archivo" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="comentario_02_archivo" Type="varchar" MaxLength="2000" Nullable="false" />
+    <Property Name="estado_archivo" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CREADO_P_archivo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="FECHA_C_archivo" Type="datetime" Nullable="false" />
+    <Property Name="MOD_P_archivo" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="FECHA_M_archivo" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cama">
+    <Key>
+      <PropertyRef Name="id_cama" />
+    </Key>
+    <Property Name="id_cama" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_cama" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="capacidad_cama" Type="int" Nullable="false" />
+    <Property Name="estado_cama" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="cancelacion">
+    <Key>
+      <PropertyRef Name="id_cancelacion" />
+    </Key>
+    <Property Name="id_cancelacion" Type="int" Nullable="false" />
+    <Property Name="id_reserv_cancelacion" Type="int" Nullable="false" />
+    <Property Name="fecha_cancelacion" Type="datetime" Nullable="false" />
+    <Property Name="motivo_cancelacion" Type="varchar(max)" Nullable="false" />
+    <Property Name="creado_por_cancelacion" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="estado_cancelacion" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="mod_por_cancelacion" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_mod_cancelacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="caracteristica">
+    <Key>
+      <PropertyRef Name="id_caracteristica" />
+    </Key>
+    <Property Name="id_caracteristica" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_caracteristica" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado_caracteristica" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_CLIENTE" />
+    </Key>
+    <Property Name="ID_CLIENTE" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="ID_TERCERO_CLIENTE" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ID_T_CLIENTE" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="LIM_CRED_CLIENTE" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="SALDO_CLIENTE" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="ESTADO_CLIENTE" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DIRECCION">
+    <Key>
+      <PropertyRef Name="id_Tercero_Direccion" />
+      <PropertyRef Name="TIPO_DIRECCION" />
+      <PropertyRef Name="N_LINEA_DIRECCION" />
+    </Key>
+    <Property Name="id_Tercero_Direccion" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="id_mun_Direccion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Direccion" Type="varchar(max)" Nullable="false" />
+    <Property Name="TIPO_DIRECCION" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="N_LINEA_DIRECCION" Type="int" Nullable="false" />
+    <Property Name="ESTADO_DIRECCION" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="edificio">
+    <Key>
+      <PropertyRef Name="id_edificio" />
+    </Key>
+    <Property Name="id_edificio" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_edificio" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="cant_nivel_edificio" Type="int" Nullable="false" />
+    <Property Name="estado_edificio" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMAIL">
+    <Key>
+      <PropertyRef Name="id_Tercero_Email" />
+      <PropertyRef Name="N_LINEA_Email" />
+    </Key>
+    <Property Name="id_Tercero_Email" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Email" Type="varchar(max)" Nullable="false" />
+    <Property Name="TIPO_Email" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="N_LINEA_Email" Type="int" Nullable="false" />
+    <Property Name="ESTADO_Email" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_EMPLEADO" />
+    </Key>
+    <Property Name="ID_EMPLEADO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="ID_TERCERO_EMPLEADO" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="ID_T_EMPLEADO" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="FECHA_I_EMPLEADO" Type="date" Nullable="false" />
+    <Property Name="ESTADO_EMPLEADO" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="habitacion">
+    <Key>
+      <PropertyRef Name="id_habitacion" />
+    </Key>
+    <Property Name="id_habitacion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_habitacion" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="t_habitacion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="edificio_habitacion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="piso_habitacion" Type="int" Nullable="false" />
+    <Property Name="estado_habitacion" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HOTEL">
+    <Key>
+      <PropertyRef Name="id_hotel" />
+    </Key>
+    <Property Name="id_hotel" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_hotel" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="Direccion_hotel" Type="varchar(max)" Nullable="false" />
+    <Property Name="tel_hotel" Type="varchar" MaxLength="12" Nullable="false" />
+    <Property Name="a_cancelacion_hotel" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mantenimiento">
+    <Key>
+      <PropertyRef Name="id_mantenimiento" />
+    </Key>
+    <Property Name="id_mantenimiento" Type="int" Nullable="false" />
+    <Property Name="id_hab_mantenimiento" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="fecha_cre_mantenimiento" Type="datetime" Nullable="false" />
+    <Property Name="fecha_mod_mantenimiento" Type="datetime" Nullable="false" />
+    <Property Name="estado_mantenimiento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="mantenimiento_det">
+    <Key>
+      <PropertyRef Name="id_mantenimiento_det" />
+      <PropertyRef Name="id_t_mant_det" />
+    </Key>
+    <Property Name="id_mantenimiento_det" Type="int" Nullable="false" />
+    <Property Name="id_t_mant_det" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_empleado_det" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="estado_mantenimiento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MUNICIPIO">
+    <Key>
+      <PropertyRef Name="id_municipio" />
+    </Key>
+    <Property Name="id_municipio" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_municipio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_prov_municipio" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="estado_municipio" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTA_CREDITO_ABONO">
+    <Key>
+      <PropertyRef Name="ID_NCC_AB" />
+      <PropertyRef Name="ID_RESERV_NCC_AB" />
+      <PropertyRef Name="N_ABONO_NCC_AB" />
+    </Key>
+    <Property Name="ID_NCC_AB" Type="int" Nullable="false" />
+    <Property Name="ID_RESERV_NCC_AB" Type="int" Nullable="false" />
+    <Property Name="N_ABONO_NCC_AB" Type="int" Nullable="false" />
+    <Property Name="FECHA_ABONO_NCC_AB" Type="datetime" Nullable="false" />
+    <Property Name="BALANCE_ANT_NCC_AB" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="ABONO_NCC_AB" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="BALANCE_ACT_NCC_AB" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTA_CREDITO_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_NCC" />
+    </Key>
+    <Property Name="ID_NCC" Type="int" Nullable="false" />
+    <Property Name="ID_CLIENTE_NCC" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MONTO_NCC" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="FECHA_NCC" Type="date" Nullable="false" />
+    <Property Name="ESTADO_NCC" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CREADO_P_NCC" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="FECHA_C_NCC" Type="datetime" Nullable="false" />
+    <Property Name="MOD_P_NCC" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="FECHA_M_NCC" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTA_CREDITO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_NCC_DET" />
+      <PropertyRef Name="ID_RESERV_NCC_DET" />
+    </Key>
+    <Property Name="ID_NCC_DET" Type="int" Nullable="false" />
+    <Property Name="ID_RESERV_NCC_DET" Type="int" Nullable="false" />
+    <Property Name="VALOR_NCC_DET" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="BALANCE_NCC_DET" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="FECHA_NCC_DET" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Oferta">
+    <Key>
+      <PropertyRef Name="id_oferta" />
+    </Key>
+    <Property Name="id_oferta" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_oferta" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="id_temp_oferta" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="estado_oferta" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="oferta_det_01">
+    <Key>
+      <PropertyRef Name="id_oferta_det01" />
+      <PropertyRef Name="id_t_aloj_det01" />
+    </Key>
+    <Property Name="id_oferta_det01" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_t_aloj_det01" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descuento_det01" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="oferta_det_02">
+    <Key>
+      <PropertyRef Name="id_oferta_det02" />
+      <PropertyRef Name="id_t_cliente_det02" />
+    </Key>
+    <Property Name="id_oferta_det02" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_t_cliente_det02" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descuento_det02" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="oferta_det_03">
+    <Key>
+      <PropertyRef Name="id_oferta_det03" />
+      <PropertyRef Name="c_ini_aloj_det03" />
+      <PropertyRef Name="c_fin_aloj_det03" />
+    </Key>
+    <Property Name="id_oferta_det03" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="c_ini_aloj_det03" Type="int" Nullable="false" />
+    <Property Name="c_fin_aloj_det03" Type="int" Nullable="false" />
+    <Property Name="descuento_det03" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PAIS">
+    <Key>
+      <PropertyRef Name="id_pais" />
+    </Key>
+    <Property Name="id_pais" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_pais" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="estado_pais" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permisos_Adi">
+    <Key>
+      <PropertyRef Name="id_opcion" />
+    </Key>
+    <Property Name="id_opcion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Descr_opcion" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Estado_Opcion" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="id_provincia" />
+    </Key>
+    <Property Name="id_provincia" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_provincia" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="id_pais_provincia" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="estado_provincia" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservacion">
+    <Key>
+      <PropertyRef Name="id_reservacion" />
+    </Key>
+    <Property Name="id_reservacion" Type="int" Nullable="false" />
+    <Property Name="id_cliente" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_t_aloj_reservacion" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="fecha_lleg_reservacion" Type="datetime" Nullable="false" />
+    <Property Name="fecha_sal_reservacion" Type="datetime" Nullable="false" />
+    <Property Name="Monto_apagar" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="estado_reservacion" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="creado_por_reservacion" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_cre_reservacion" Type="datetime" Nullable="false" />
+    <Property Name="mod_por_reservacion" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="fecha_mod_reservacion" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservacion_det">
+    <Key>
+      <PropertyRef Name="id_reservacion_det" />
+      <PropertyRef Name="id_thab_reserv_det" />
+    </Key>
+    <Property Name="id_reservacion_det" Type="int" Nullable="false" />
+    <Property Name="id_thab_reserv_det" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="cant_reserv_det" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="servicio">
+    <Key>
+      <PropertyRef Name="id_servicio" />
+    </Key>
+    <Property Name="id_servicio" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_servicio" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="costo_servicio" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="estado_servicio" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="talojamiento_servicio">
+    <Key>
+      <PropertyRef Name="id_t_alojamiento_tas" />
+      <PropertyRef Name="id_servicio_tas" />
+    </Key>
+    <Property Name="id_t_alojamiento_tas" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_servicio_tas" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TELEFONO">
+    <Key>
+      <PropertyRef Name="id_Tercero_Tel" />
+      <PropertyRef Name="Numero_Tel" />
+      <PropertyRef Name="N_LINEA_Tel" />
+    </Key>
+    <Property Name="id_Tercero_Tel" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Numero_Tel" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TIPO_Tel" Type="varchar" MaxLength="2" Nullable="false" />
+    <Property Name="N_LINEA_Tel" Type="int" Nullable="false" />
+    <Property Name="ESTADO_Tel" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TEMPORADA">
+    <Key>
+      <PropertyRef Name="id_temporada" />
+    </Key>
+    <Property Name="id_temporada" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_temporada" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="fecha_i_temporada" Type="date" Nullable="false" />
+    <Property Name="fecha_f_temporada" Type="date" Nullable="false" />
+    <Property Name="estado_temporada" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tercero">
+    <Key>
+      <PropertyRef Name="id_Tercero" />
+    </Key>
+    <Property Name="id_Tercero" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Nombre_Tercero" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="ID_T_Identif_Tercero" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Cedula_Tercero" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="Fecha_Nac_Tercero" Type="date" Nullable="false" />
+    <Property Name="Sexo_Tercero" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="Estado_Tercero" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thab_caracteristica">
+    <Key>
+      <PropertyRef Name="id_t_hab_thcar" />
+      <PropertyRef Name="id_caracteristica_thcar" />
+    </Key>
+    <Property Name="id_t_hab_thcar" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_caracteristica_thcar" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="thabitacion_cama">
+    <Key>
+      <PropertyRef Name="id_t_hab_thc" />
+      <PropertyRef Name="id_cama_thc" />
+    </Key>
+    <Property Name="id_t_hab_thc" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="id_cama_thc" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_alojamiento">
+    <Key>
+      <PropertyRef Name="id_t_alojamiento" />
+    </Key>
+    <Property Name="id_t_alojamiento" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_t_alojamiento" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="costo_t_alojamiento" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="estado_t_alojamiento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_archivo">
+    <Key>
+      <PropertyRef Name="id_t_archivo" />
+    </Key>
+    <Property Name="id_t_archivo" Type="int" Nullable="false" />
+    <Property Name="descr_t_archivo" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado_t_archivo" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_T_CLIENTE_TC" />
+    </Key>
+    <Property Name="ID_T_CLIENTE_TC" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="DESCR_TC" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ESTADO_TC" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_EMPLEADO">
+    <Key>
+      <PropertyRef Name="ID_T_EMPLEADO_TE" />
+    </Key>
+    <Property Name="ID_T_EMPLEADO_TE" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="DESCR_TE" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ESTADO_TE" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_habitacion">
+    <Key>
+      <PropertyRef Name="id_t_hab" />
+    </Key>
+    <Property Name="id_t_hab" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_t_hab" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="capacidad_hab" Type="int" Nullable="false" />
+    <Property Name="costo_hab" Type="decimal" Precision="12" Scale="2" Nullable="false" />
+    <Property Name="estado_t_hab" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Identificacion">
+    <Key>
+      <PropertyRef Name="Id_Tipo_Ident" />
+    </Key>
+    <Property Name="Id_Tipo_Ident" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Descr_Tipo_Ident" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Estado_Tipo_Ident" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tipo_mantenimiento">
+    <Key>
+      <PropertyRef Name="id_t_mantenimiento" />
+    </Key>
+    <Property Name="id_t_mantenimiento" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="descr_t_mantenimiento" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="estado_t_mantenimiento" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tipo_Usuario">
+    <Key>
+      <PropertyRef Name="id_T_Usuario" />
+    </Key>
+    <Property Name="id_T_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descripcion_T_Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+    <Property Name="Nivel_Acceso_T_Usuario" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="Estado_T_Usuario" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="id_Usuario" />
+    </Key>
+    <Property Name="id_Usuario" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="id_Tercero_Usuario" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="Tipo_Usuario" Type="int" Nullable="false" />
+    <Property Name="password_Usuario" Type="varchar(max)" Nullable="false" />
+    <Property Name="Estado_Usuario" Type="char" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuario_Permisos_Adi">
+    <Key>
+      <PropertyRef Name="id_Usuario_UP" />
+      <PropertyRef Name="id_Permiso_UP" />
+    </Key>
+    <Property Name="id_Usuario_UP" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="id_Permiso_UP" Type="char" MaxLength="5" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_aloj_det">
+    <End Role="alojamiento" Type="Self.alojamiento" Multiplicity="1" />
+    <End Role="alojamiento_det" Type="Self.alojamiento_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="alojamiento">
+        <PropertyRef Name="id_alojamiento" />
+      </Principal>
+      <Dependent Role="alojamiento_det">
+        <PropertyRef Name="id_alojamiento_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cama_thc">
+    <End Role="cama" Type="Self.cama" Multiplicity="1" />
+    <End Role="thabitacion_cama" Type="Self.thabitacion_cama" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cama">
+        <PropertyRef Name="id_cama" />
+      </Principal>
+      <Dependent Role="thabitacion_cama">
+        <PropertyRef Name="id_cama_thc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CLIENTE_NCC">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="NOTA_CREDITO_CLIENTE" Type="Self.NOTA_CREDITO_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="NOTA_CREDITO_CLIENTE">
+        <PropertyRef Name="ID_CLIENTE_NCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_cliente_res">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="ID_CLIENTE" />
+      </Principal>
+      <Dependent Role="reservacion">
+        <PropertyRef Name="id_cliente" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_edificio_hab">
+    <End Role="edificio" Type="Self.edificio" Multiplicity="1" />
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="edificio">
+        <PropertyRef Name="id_edificio" />
+      </Principal>
+      <Dependent Role="habitacion">
+        <PropertyRef Name="edificio_habitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EMPLEADO_mant_det">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="1" />
+    <End Role="mantenimiento_det" Type="Self.mantenimiento_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="ID_EMPLEADO" />
+      </Principal>
+      <Dependent Role="mantenimiento_det">
+        <PropertyRef Name="id_empleado_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_hab_aloj_det">
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="1" />
+    <End Role="alojamiento_det" Type="Self.alojamiento_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="habitacion">
+        <PropertyRef Name="id_habitacion" />
+      </Principal>
+      <Dependent Role="alojamiento_det">
+        <PropertyRef Name="id_hab_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_habitacion_mant">
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="1" />
+    <End Role="mantenimiento" Type="Self.mantenimiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="habitacion">
+        <PropertyRef Name="id_habitacion" />
+      </Principal>
+      <Dependent Role="mantenimiento">
+        <PropertyRef Name="id_hab_mantenimiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_mant_det">
+    <End Role="mantenimiento" Type="Self.mantenimiento" Multiplicity="1" />
+    <End Role="mantenimiento_det" Type="Self.mantenimiento_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="mantenimiento">
+        <PropertyRef Name="id_mantenimiento" />
+      </Principal>
+      <Dependent Role="mantenimiento_det">
+        <PropertyRef Name="id_mantenimiento_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MUNICIPIO_Direccion">
+    <End Role="MUNICIPIO" Type="Self.MUNICIPIO" Multiplicity="1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MUNICIPIO">
+        <PropertyRef Name="id_municipio" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="id_mun_Direccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MUNICIPIO_PROV">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="MUNICIPIO" Type="Self.MUNICIPIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="id_provincia" />
+      </Principal>
+      <Dependent Role="MUNICIPIO">
+        <PropertyRef Name="id_prov_municipio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oferta_d01">
+    <End Role="Oferta" Type="Self.Oferta" Multiplicity="1" />
+    <End Role="oferta_det_01" Type="Self.oferta_det_01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oferta">
+        <PropertyRef Name="id_oferta" />
+      </Principal>
+      <Dependent Role="oferta_det_01">
+        <PropertyRef Name="id_oferta_det01" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oferta_d02">
+    <End Role="Oferta" Type="Self.Oferta" Multiplicity="1" />
+    <End Role="oferta_det_02" Type="Self.oferta_det_02" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oferta">
+        <PropertyRef Name="id_oferta" />
+      </Principal>
+      <Dependent Role="oferta_det_02">
+        <PropertyRef Name="id_oferta_det02" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_oferta_d03">
+    <End Role="Oferta" Type="Self.Oferta" Multiplicity="1" />
+    <End Role="oferta_det_03" Type="Self.oferta_det_03" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Oferta">
+        <PropertyRef Name="id_oferta" />
+      </Principal>
+      <Dependent Role="oferta_det_03">
+        <PropertyRef Name="id_oferta_det03" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Permiso_UP_Permiso">
+    <End Role="Permisos_Adi" Type="Self.Permisos_Adi" Multiplicity="1" />
+    <End Role="Usuario_Permisos_Adi" Type="Self.Usuario_Permisos_Adi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permisos_Adi">
+        <PropertyRef Name="id_opcion" />
+      </Principal>
+      <Dependent Role="Usuario_Permisos_Adi">
+        <PropertyRef Name="id_Permiso_UP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PROVINCIA_PAIS">
+    <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="id_pais" />
+      </Principal>
+      <Dependent Role="PROVINCIA">
+        <PropertyRef Name="id_pais_provincia" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reserv_aloj">
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="1" />
+    <End Role="alojamiento" Type="Self.alojamiento" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservacion">
+        <PropertyRef Name="id_reservacion" />
+      </Principal>
+      <Dependent Role="alojamiento">
+        <PropertyRef Name="id_reserv_alojamiento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reserv_canc">
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="1" />
+    <End Role="cancelacion" Type="Self.cancelacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservacion">
+        <PropertyRef Name="id_reservacion" />
+      </Principal>
+      <Dependent Role="cancelacion">
+        <PropertyRef Name="id_reserv_cancelacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reserv_det">
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="1" />
+    <End Role="reservacion_det" Type="Self.reservacion_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservacion">
+        <PropertyRef Name="id_reservacion" />
+      </Principal>
+      <Dependent Role="reservacion_det">
+        <PropertyRef Name="id_reservacion_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESERV_NCC_AB">
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="1" />
+    <End Role="NOTA_CREDITO_ABONO" Type="Self.NOTA_CREDITO_ABONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservacion">
+        <PropertyRef Name="id_reservacion" />
+      </Principal>
+      <Dependent Role="NOTA_CREDITO_ABONO">
+        <PropertyRef Name="ID_RESERV_NCC_AB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RESERV_NCC_DET">
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="1" />
+    <End Role="NOTA_CREDITO_DETALLE" Type="Self.NOTA_CREDITO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservacion">
+        <PropertyRef Name="id_reservacion" />
+      </Principal>
+      <Dependent Role="NOTA_CREDITO_DETALLE">
+        <PropertyRef Name="ID_RESERV_NCC_DET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_t_cliente_det02">
+    <End Role="TIPO_CLIENTE" Type="Self.TIPO_CLIENTE" Multiplicity="1" />
+    <End Role="oferta_det_02" Type="Self.oferta_det_02" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CLIENTE">
+        <PropertyRef Name="ID_T_CLIENTE_TC" />
+      </Principal>
+      <Dependent Role="oferta_det_02">
+        <PropertyRef Name="id_t_cliente_det02" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_CLIENTE_TC">
+    <End Role="TIPO_CLIENTE" Type="Self.TIPO_CLIENTE" Multiplicity="1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CLIENTE">
+        <PropertyRef Name="ID_T_CLIENTE_TC" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="ID_T_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_EMPLEADO_TE">
+    <End Role="TIPO_EMPLEADO" Type="Self.TIPO_EMPLEADO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_EMPLEADO">
+        <PropertyRef Name="ID_T_EMPLEADO_TE" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="ID_T_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_talojamiento_of_det01">
+    <End Role="tipo_alojamiento" Type="Self.tipo_alojamiento" Multiplicity="1" />
+    <End Role="oferta_det_01" Type="Self.oferta_det_01" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_alojamiento">
+        <PropertyRef Name="id_t_alojamiento" />
+      </Principal>
+      <Dependent Role="oferta_det_01">
+        <PropertyRef Name="id_t_aloj_det01" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_talojamiento_res">
+    <End Role="tipo_alojamiento" Type="Self.tipo_alojamiento" Multiplicity="1" />
+    <End Role="reservacion" Type="Self.reservacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_alojamiento">
+        <PropertyRef Name="id_t_alojamiento" />
+      </Principal>
+      <Dependent Role="reservacion">
+        <PropertyRef Name="id_t_aloj_reservacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_talojamiento_tas">
+    <End Role="tipo_alojamiento" Type="Self.tipo_alojamiento" Multiplicity="1" />
+    <End Role="talojamiento_servicio" Type="Self.talojamiento_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_alojamiento">
+        <PropertyRef Name="id_t_alojamiento" />
+      </Principal>
+      <Dependent Role="talojamiento_servicio">
+        <PropertyRef Name="id_t_alojamiento_tas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_talojamiento_thcar">
+    <End Role="caracteristica" Type="Self.caracteristica" Multiplicity="1" />
+    <End Role="thab_caracteristica" Type="Self.thab_caracteristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="caracteristica">
+        <PropertyRef Name="id_caracteristica" />
+      </Principal>
+      <Dependent Role="thab_caracteristica">
+        <PropertyRef Name="id_caracteristica_thcar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_temporada_oferta">
+    <End Role="TEMPORADA" Type="Self.TEMPORADA" Multiplicity="1" />
+    <End Role="Oferta" Type="Self.Oferta" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEMPORADA">
+        <PropertyRef Name="id_temporada" />
+      </Principal>
+      <Dependent Role="Oferta">
+        <PropertyRef Name="id_temp_oferta" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_CLIENTE">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="ID_TERCERO_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_Direccion">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="DIRECCION" Type="Self.DIRECCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="DIRECCION">
+        <PropertyRef Name="id_Tercero_Direccion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_Email">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="EMAIL" Type="Self.EMAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="EMAIL">
+        <PropertyRef Name="id_Tercero_Email" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_EMPLEADO">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="ID_TERCERO_EMPLEADO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_T_Identif">
+    <End Role="Tipo_Identificacion" Type="Self.Tipo_Identificacion" Multiplicity="1" />
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Identificacion">
+        <PropertyRef Name="Id_Tipo_Ident" />
+      </Principal>
+      <Dependent Role="Tercero">
+        <PropertyRef Name="ID_T_Identif_Tercero" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tercero_Tel">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="TELEFONO" Type="Self.TELEFONO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="TELEFONO">
+        <PropertyRef Name="id_Tercero_Tel" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_thab_reserv_det">
+    <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+    <End Role="reservacion_det" Type="Self.reservacion_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_habitacion">
+        <PropertyRef Name="id_t_hab" />
+      </Principal>
+      <Dependent Role="reservacion_det">
+        <PropertyRef Name="id_thab_reserv_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_thabitacion_hab">
+    <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_habitacion">
+        <PropertyRef Name="id_t_hab" />
+      </Principal>
+      <Dependent Role="habitacion">
+        <PropertyRef Name="t_habitacion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_thabitacion_tas">
+    <End Role="servicio" Type="Self.servicio" Multiplicity="1" />
+    <End Role="talojamiento_servicio" Type="Self.talojamiento_servicio" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="servicio">
+        <PropertyRef Name="id_servicio" />
+      </Principal>
+      <Dependent Role="talojamiento_servicio">
+        <PropertyRef Name="id_servicio_tas" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_thabitacion_thc">
+    <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+    <End Role="thabitacion_cama" Type="Self.thabitacion_cama" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_habitacion">
+        <PropertyRef Name="id_t_hab" />
+      </Principal>
+      <Dependent Role="thabitacion_cama">
+        <PropertyRef Name="id_t_hab_thc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_thabitacion_thcar">
+    <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+    <End Role="thab_caracteristica" Type="Self.thab_caracteristica" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_habitacion">
+        <PropertyRef Name="id_t_hab" />
+      </Principal>
+      <Dependent Role="thab_caracteristica">
+        <PropertyRef Name="id_t_hab_thcar" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo_archivo">
+    <End Role="tipo_archivo" Type="Self.tipo_archivo" Multiplicity="1" />
+    <End Role="archivo" Type="Self.archivo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_archivo">
+        <PropertyRef Name="id_t_archivo" />
+      </Principal>
+      <Dependent Role="archivo">
+        <PropertyRef Name="id_tarchivo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tipo_mant_det">
+    <End Role="tipo_mantenimiento" Type="Self.tipo_mantenimiento" Multiplicity="1" />
+    <End Role="mantenimiento_det" Type="Self.mantenimiento_det" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_mantenimiento">
+        <PropertyRef Name="id_t_mantenimiento" />
+      </Principal>
+      <Dependent Role="mantenimiento_det">
+        <PropertyRef Name="id_t_mant_det" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Tercero">
+    <End Role="Tercero" Type="Self.Tercero" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tercero">
+        <PropertyRef Name="id_Tercero" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="id_Tercero_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_Tipo_Usuario">
+    <End Role="Tipo_Usuario" Type="Self.Tipo_Usuario" Multiplicity="1" />
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tipo_Usuario">
+        <PropertyRef Name="id_T_Usuario" />
+      </Principal>
+      <Dependent Role="Usuario">
+        <PropertyRef Name="Tipo_Usuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuario_UP_Usuario">
+    <End Role="Usuario" Type="Self.Usuario" Multiplicity="1" />
+    <End Role="Usuario_Permisos_Adi" Type="Self.Usuario_Permisos_Adi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="id_Usuario" />
+      </Principal>
+      <Dependent Role="Usuario_Permisos_Adi">
+        <PropertyRef Name="id_Usuario_UP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hoteleriaModelStoreContainer">
+    <EntitySet Name="alojamiento" EntityType="Self.alojamiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="alojamiento_det" EntityType="Self.alojamiento_det" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cama" EntityType="Self.cama" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="cancelacion" EntityType="Self.cancelacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="caracteristica" EntityType="Self.caracteristica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DIRECCION" EntityType="Self.DIRECCION" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="edificio" EntityType="Self.edificio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMAIL" EntityType="Self.EMAIL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="habitacion" EntityType="Self.habitacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HOTEL" EntityType="Self.HOTEL" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mantenimiento" EntityType="Self.mantenimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="mantenimiento_det" EntityType="Self.mantenimiento_det" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MUNICIPIO" EntityType="Self.MUNICIPIO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTA_CREDITO_ABONO" EntityType="Self.NOTA_CREDITO_ABONO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTA_CREDITO_CLIENTE" EntityType="Self.NOTA_CREDITO_CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NOTA_CREDITO_DETALLE" EntityType="Self.NOTA_CREDITO_DETALLE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Oferta" EntityType="Self.Oferta" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oferta_det_01" EntityType="Self.oferta_det_01" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oferta_det_02" EntityType="Self.oferta_det_02" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="oferta_det_03" EntityType="Self.oferta_det_03" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permisos_Adi" EntityType="Self.Permisos_Adi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservacion" EntityType="Self.reservacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservacion_det" EntityType="Self.reservacion_det" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="servicio" EntityType="Self.servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="talojamiento_servicio" EntityType="Self.talojamiento_servicio" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TELEFONO" EntityType="Self.TELEFONO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TEMPORADA" EntityType="Self.TEMPORADA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tercero" EntityType="Self.Tercero" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="thab_caracteristica" EntityType="Self.thab_caracteristica" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="thabitacion_cama" EntityType="Self.thabitacion_cama" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_alojamiento" EntityType="Self.tipo_alojamiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_archivo" EntityType="Self.tipo_archivo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_CLIENTE" EntityType="Self.TIPO_CLIENTE" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TIPO_EMPLEADO" EntityType="Self.TIPO_EMPLEADO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_habitacion" EntityType="Self.tipo_habitacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Identificacion" EntityType="Self.Tipo_Identificacion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tipo_mantenimiento" EntityType="Self.tipo_mantenimiento" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tipo_Usuario" EntityType="Self.Tipo_Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuario_Permisos_Adi" EntityType="Self.Usuario_Permisos_Adi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="archivo" EntityType="Self.archivo" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [archivo].[id_archivo] AS [id_archivo], 
+    [archivo].[id_tarchivo] AS [id_tarchivo], 
+    [archivo].[ruta_archivo] AS [ruta_archivo], 
+    [archivo].[comentario_01_archivo] AS [comentario_01_archivo], 
+    [archivo].[comentario_02_archivo] AS [comentario_02_archivo], 
+    [archivo].[estado_archivo] AS [estado_archivo], 
+    [archivo].[CREADO_P_archivo] AS [CREADO_P_archivo], 
+    [archivo].[FECHA_C_archivo] AS [FECHA_C_archivo], 
+    [archivo].[MOD_P_archivo] AS [MOD_P_archivo], 
+    [archivo].[FECHA_M_archivo] AS [FECHA_M_archivo]
+    FROM [dbo].[archivo] AS [archivo]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_aloj_det" Association="Self.FK_aloj_det">
+      <End Role="alojamiento" EntitySet="alojamiento" />
+      <End Role="alojamiento_det" EntitySet="alojamiento_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cama_thc" Association="Self.FK_cama_thc">
+      <End Role="cama" EntitySet="cama" />
+      <End Role="thabitacion_cama" EntitySet="thabitacion_cama" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CLIENTE_NCC" Association="Self.FK_CLIENTE_NCC">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="NOTA_CREDITO_CLIENTE" EntitySet="NOTA_CREDITO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_cliente_res" Association="Self.FK_cliente_res">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="reservacion" EntitySet="reservacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_edificio_hab" Association="Self.FK_edificio_hab">
+      <End Role="edificio" EntitySet="edificio" />
+      <End Role="habitacion" EntitySet="habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EMPLEADO_mant_det" Association="Self.FK_EMPLEADO_mant_det">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="mantenimiento_det" EntitySet="mantenimiento_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_hab_aloj_det" Association="Self.FK_hab_aloj_det">
+      <End Role="habitacion" EntitySet="habitacion" />
+      <End Role="alojamiento_det" EntitySet="alojamiento_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_habitacion_mant" Association="Self.FK_habitacion_mant">
+      <End Role="habitacion" EntitySet="habitacion" />
+      <End Role="mantenimiento" EntitySet="mantenimiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_mant_det" Association="Self.FK_mant_det">
+      <End Role="mantenimiento" EntitySet="mantenimiento" />
+      <End Role="mantenimiento_det" EntitySet="mantenimiento_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MUNICIPIO_Direccion" Association="Self.FK_MUNICIPIO_Direccion">
+      <End Role="MUNICIPIO" EntitySet="MUNICIPIO" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MUNICIPIO_PROV" Association="Self.FK_MUNICIPIO_PROV">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="MUNICIPIO" EntitySet="MUNICIPIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oferta_d01" Association="Self.FK_oferta_d01">
+      <End Role="Oferta" EntitySet="Oferta" />
+      <End Role="oferta_det_01" EntitySet="oferta_det_01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oferta_d02" Association="Self.FK_oferta_d02">
+      <End Role="Oferta" EntitySet="Oferta" />
+      <End Role="oferta_det_02" EntitySet="oferta_det_02" />
+    </AssociationSet>
+    <AssociationSet Name="FK_oferta_d03" Association="Self.FK_oferta_d03">
+      <End Role="Oferta" EntitySet="Oferta" />
+      <End Role="oferta_det_03" EntitySet="oferta_det_03" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Permiso_UP_Permiso" Association="Self.FK_Permiso_UP_Permiso">
+      <End Role="Permisos_Adi" EntitySet="Permisos_Adi" />
+      <End Role="Usuario_Permisos_Adi" EntitySet="Usuario_Permisos_Adi" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PROVINCIA_PAIS" Association="Self.FK_PROVINCIA_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reserv_aloj" Association="Self.FK_reserv_aloj">
+      <End Role="reservacion" EntitySet="reservacion" />
+      <End Role="alojamiento" EntitySet="alojamiento" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reserv_canc" Association="Self.FK_reserv_canc">
+      <End Role="reservacion" EntitySet="reservacion" />
+      <End Role="cancelacion" EntitySet="cancelacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reserv_det" Association="Self.FK_reserv_det">
+      <End Role="reservacion" EntitySet="reservacion" />
+      <End Role="reservacion_det" EntitySet="reservacion_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESERV_NCC_AB" Association="Self.FK_RESERV_NCC_AB">
+      <End Role="reservacion" EntitySet="reservacion" />
+      <End Role="NOTA_CREDITO_ABONO" EntitySet="NOTA_CREDITO_ABONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RESERV_NCC_DET" Association="Self.FK_RESERV_NCC_DET">
+      <End Role="reservacion" EntitySet="reservacion" />
+      <End Role="NOTA_CREDITO_DETALLE" EntitySet="NOTA_CREDITO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_t_cliente_det02" Association="Self.FK_t_cliente_det02">
+      <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
+      <End Role="oferta_det_02" EntitySet="oferta_det_02" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_CLIENTE_TC" Association="Self.FK_T_CLIENTE_TC">
+      <End Role="TIPO_CLIENTE" EntitySet="TIPO_CLIENTE" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_EMPLEADO_TE" Association="Self.FK_T_EMPLEADO_TE">
+      <End Role="TIPO_EMPLEADO" EntitySet="TIPO_EMPLEADO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_talojamiento_of_det01" Association="Self.FK_talojamiento_of_det01">
+      <End Role="tipo_alojamiento" EntitySet="tipo_alojamiento" />
+      <End Role="oferta_det_01" EntitySet="oferta_det_01" />
+    </AssociationSet>
+    <AssociationSet Name="FK_talojamiento_res" Association="Self.FK_talojamiento_res">
+      <End Role="tipo_alojamiento" EntitySet="tipo_alojamiento" />
+      <End Role="reservacion" EntitySet="reservacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_talojamiento_tas" Association="Self.FK_talojamiento_tas">
+      <End Role="tipo_alojamiento" EntitySet="tipo_alojamiento" />
+      <End Role="talojamiento_servicio" EntitySet="talojamiento_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_talojamiento_thcar" Association="Self.FK_talojamiento_thcar">
+      <End Role="caracteristica" EntitySet="caracteristica" />
+      <End Role="thab_caracteristica" EntitySet="thab_caracteristica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_temporada_oferta" Association="Self.FK_temporada_oferta">
+      <End Role="TEMPORADA" EntitySet="TEMPORADA" />
+      <End Role="Oferta" EntitySet="Oferta" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_CLIENTE" Association="Self.FK_Tercero_CLIENTE">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_Direccion" Association="Self.FK_Tercero_Direccion">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="DIRECCION" EntitySet="DIRECCION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_Email" Association="Self.FK_Tercero_Email">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="EMAIL" EntitySet="EMAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_EMPLEADO" Association="Self.FK_Tercero_EMPLEADO">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_T_Identif" Association="Self.FK_Tercero_T_Identif">
+      <End Role="Tipo_Identificacion" EntitySet="Tipo_Identificacion" />
+      <End Role="Tercero" EntitySet="Tercero" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tercero_Tel" Association="Self.FK_Tercero_Tel">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="TELEFONO" EntitySet="TELEFONO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_thab_reserv_det" Association="Self.FK_thab_reserv_det">
+      <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+      <End Role="reservacion_det" EntitySet="reservacion_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_thabitacion_hab" Association="Self.FK_thabitacion_hab">
+      <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+      <End Role="habitacion" EntitySet="habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FK_thabitacion_tas" Association="Self.FK_thabitacion_tas">
+      <End Role="servicio" EntitySet="servicio" />
+      <End Role="talojamiento_servicio" EntitySet="talojamiento_servicio" />
+    </AssociationSet>
+    <AssociationSet Name="FK_thabitacion_thc" Association="Self.FK_thabitacion_thc">
+      <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+      <End Role="thabitacion_cama" EntitySet="thabitacion_cama" />
+    </AssociationSet>
+    <AssociationSet Name="FK_thabitacion_thcar" Association="Self.FK_thabitacion_thcar">
+      <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+      <End Role="thab_caracteristica" EntitySet="thab_caracteristica" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo_archivo" Association="Self.FK_tipo_archivo">
+      <End Role="tipo_archivo" EntitySet="tipo_archivo" />
+      <End Role="archivo" EntitySet="archivo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tipo_mant_det" Association="Self.FK_tipo_mant_det">
+      <End Role="tipo_mantenimiento" EntitySet="tipo_mantenimiento" />
+      <End Role="mantenimiento_det" EntitySet="mantenimiento_det" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Tercero" Association="Self.FK_Usuario_Tercero">
+      <End Role="Tercero" EntitySet="Tercero" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_Tipo_Usuario" Association="Self.FK_Usuario_Tipo_Usuario">
+      <End Role="Tipo_Usuario" EntitySet="Tipo_Usuario" />
+      <End Role="Usuario" EntitySet="Usuario" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuario_UP_Usuario" Association="Self.FK_Usuario_UP_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Usuario_Permisos_Adi" EntitySet="Usuario_Permisos_Adi" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
