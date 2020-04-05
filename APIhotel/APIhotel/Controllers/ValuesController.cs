@@ -21,10 +21,16 @@ namespace APIhotel.Controllers
             return rq;
         }
 
-        // GET api/values/5
-        public string Get(int id)
+        // GET api/values?id1=2&id2=2
+        public IEnumerable<Models.Hotel.Tipo_Usuario> Get(int id1)
         {
-            return "value";
+            IEnumerable<Models.Hotel.Tipo_Usuario> rq;
+            using (Models.Hotel.hoteleriaEntities db = new Models.Hotel.hoteleriaEntities())
+            {
+                db.Configuration.LazyLoadingEnabled = false;
+                rq = db.Tipo_Usuario.Where(s=>s.id_T_Usuario==id1).ToList();
+            }
+            return rq;
         }
 
         // POST api/values
