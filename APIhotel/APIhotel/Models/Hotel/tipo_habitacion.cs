@@ -19,8 +19,8 @@ namespace APIhotel.Models.Hotel
         {
             this.habitacions = new HashSet<habitacion>();
             this.reservacion_det = new HashSet<reservacion_det>();
+            this.thabitacion_cama = new HashSet<thabitacion_cama>();
             this.caracteristicas = new HashSet<caracteristica>();
-            this.camas = new HashSet<cama>();
         }
     
         public string id_t_hab { get; set; }
@@ -34,8 +34,8 @@ namespace APIhotel.Models.Hotel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<reservacion_det> reservacion_det { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<caracteristica> caracteristicas { get; set; }
+        public virtual ICollection<thabitacion_cama> thabitacion_cama { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<cama> camas { get; set; }
+        public virtual ICollection<caracteristica> caracteristicas { get; set; }
     }
 }

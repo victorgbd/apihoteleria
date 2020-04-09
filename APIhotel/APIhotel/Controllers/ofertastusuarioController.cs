@@ -13,7 +13,7 @@ namespace APIhotel.Controllers
         public IEnumerable<Models.Hotel.oferta_det_02> Get()
         {
             IEnumerable<Models.Hotel.oferta_det_02> rq;
-            using (Models.Hotel.hoteleriaEntities db = new Models.Hotel.hoteleriaEntities())
+            using (Models.Hotel.hotelEntities db = new Models.Hotel.hotelEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 rq = db.oferta_det_02.ToList();
@@ -24,7 +24,7 @@ namespace APIhotel.Controllers
         public IEnumerable<Models.Hotel.oferta_det_02> Get(string idofer,string idtipcli)
         {
             IEnumerable<Models.Hotel.oferta_det_02> rq;
-            using (Models.Hotel.hoteleriaEntities db = new Models.Hotel.hoteleriaEntities())
+            using (Models.Hotel.hotelEntities db = new Models.Hotel.hotelEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 rq = db.oferta_det_02.Where(s => s.id_oferta_det02 == idofer && s.id_t_cliente_det02 == idtipcli).ToList();

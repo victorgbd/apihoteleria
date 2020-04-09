@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="hoteleriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="hotelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="alojamiento">
           <Key>
             <PropertyRef Name="id_alojamiento" />
@@ -26,7 +26,7 @@
           <Property Name="id_hab_det" Type="char" MaxLength="5" Nullable="false" />
         </EntityType>
         <!--Errores durante la generación:
-advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+advertencia 6002: La tabla o vista 'hoteleria2.dbo.archivo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="archivo">
           <Key>
             <PropertyRef Name="id_archivo" />
@@ -378,6 +378,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           </Key>
           <Property Name="id_t_hab_thc" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="id_cama_thc" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Cantidad_camas" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tipo_alojamiento">
           <Key>
@@ -442,7 +443,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <Key>
             <PropertyRef Name="id_T_Usuario" />
           </Key>
-          <Property Name="id_T_Usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_T_Usuario" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="Descripcion_T_Usuario" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="Nivel_Acceso_T_Usuario" Type="varchar" MaxLength="3" Nullable="false" />
           <Property Name="Estado_T_Usuario" Type="char" MaxLength="1" Nullable="false" />
@@ -453,7 +454,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           </Key>
           <Property Name="id_Usuario" Type="char" MaxLength="10" Nullable="false" />
           <Property Name="id_Tercero_Usuario" Type="char" MaxLength="10" Nullable="false" />
-          <Property Name="Tipo_Usuario" Type="int" Nullable="false" />
+          <Property Name="Tipo_Usuario" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="password_Usuario" Type="varchar(max)" Nullable="false" />
           <Property Name="Estado_Usuario" Type="char" MaxLength="1" Nullable="false" />
         </EntityType>
@@ -1005,7 +1006,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="hoteleriaModelStoreContainer">
+        <EntityContainer Name="hotelModelStoreContainer">
           <EntitySet Name="alojamiento" EntityType="Self.alojamiento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="alojamiento_det" EntityType="Self.alojamiento_det" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cama" EntityType="Self.cama" Schema="dbo" store:Type="Tables" />
@@ -1249,7 +1250,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="hoteleriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="hotelModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="alojamiento">
           <Key>
             <PropertyRef Name="id_alojamiento" />
@@ -1272,7 +1273,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <Property Name="descr_cama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="capacidad_cama" Type="Int32" Nullable="false" />
           <Property Name="estado_cama" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tipo_habitacion" Relationship="Self.thabitacion_cama" FromRole="cama" ToRole="tipo_habitacion" />
+          <NavigationProperty Name="thabitacion_cama" Relationship="Self.FK_cama_thc" FromRole="cama" ToRole="thabitacion_cama" />
         </EntityType>
         <EntityType Name="cancelacion">
           <Key>
@@ -1628,6 +1629,17 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <NavigationProperty Name="Tipo_Identificacion" Relationship="Self.FK_Tercero_T_Identif" FromRole="Tercero" ToRole="Tipo_Identificacion" />
           <NavigationProperty Name="Usuarios" Relationship="Self.FK_Usuario_Tercero" FromRole="Tercero" ToRole="Usuario" />
         </EntityType>
+        <EntityType Name="thabitacion_cama">
+          <Key>
+            <PropertyRef Name="id_t_hab_thc" />
+            <PropertyRef Name="id_cama_thc" />
+          </Key>
+          <Property Name="id_t_hab_thc" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="id_cama_thc" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Cantidad_camas" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="cama" Relationship="Self.FK_cama_thc" FromRole="thabitacion_cama" ToRole="cama" />
+          <NavigationProperty Name="tipo_habitacion" Relationship="Self.FK_thabitacion_thc" FromRole="thabitacion_cama" ToRole="tipo_habitacion" />
+        </EntityType>
         <EntityType Name="tipo_alojamiento">
           <Key>
             <PropertyRef Name="id_t_alojamiento" />
@@ -1679,8 +1691,8 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <Property Name="estado_t_hab" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="habitacions" Relationship="Self.FK_thabitacion_hab" FromRole="tipo_habitacion" ToRole="habitacion" />
           <NavigationProperty Name="reservacion_det" Relationship="Self.FK_thab_reserv_det" FromRole="tipo_habitacion" ToRole="reservacion_det" />
+          <NavigationProperty Name="thabitacion_cama" Relationship="Self.FK_thabitacion_thc" FromRole="tipo_habitacion" ToRole="thabitacion_cama" />
           <NavigationProperty Name="caracteristicas" Relationship="Self.thab_caracteristica" FromRole="tipo_habitacion" ToRole="caracteristica" />
-          <NavigationProperty Name="camas" Relationship="Self.thabitacion_cama" FromRole="tipo_habitacion" ToRole="cama" />
         </EntityType>
         <EntityType Name="Tipo_Identificacion">
           <Key>
@@ -1704,7 +1716,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <Key>
             <PropertyRef Name="id_T_Usuario" />
           </Key>
-          <Property Name="id_T_Usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_T_Usuario" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Descripcion_T_Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Nivel_Acceso_T_Usuario" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado_T_Usuario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
@@ -1716,7 +1728,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           </Key>
           <Property Name="id_Usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="id_Tercero_Usuario" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="Tipo_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Tipo_Usuario" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="password_Usuario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Estado_Usuario" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Tercero" Relationship="Self.FK_Usuario_Tercero" FromRole="Usuario" ToRole="Tercero" />
@@ -1757,6 +1769,18 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </Principal>
             <Dependent Role="alojamiento">
               <PropertyRef Name="id_reserv_alojamiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_cama_thc">
+          <End Role="cama" Type="Self.cama" Multiplicity="1" />
+          <End Role="thabitacion_cama" Type="Self.thabitacion_cama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cama">
+              <PropertyRef Name="id_cama" />
+            </Principal>
+            <Dependent Role="thabitacion_cama">
+              <PropertyRef Name="id_cama_thc" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2144,6 +2168,18 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_thabitacion_thc">
+          <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+          <End Role="thabitacion_cama" Type="Self.thabitacion_cama" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipo_habitacion">
+              <PropertyRef Name="id_t_hab" />
+            </Principal>
+            <Dependent Role="thabitacion_cama">
+              <PropertyRef Name="id_t_hab_thc" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tipo_archivo">
           <End Role="tipo_archivo" Type="Self.tipo_archivo" Multiplicity="1" />
           <End Role="archivo" Type="Self.archivo" Multiplicity="*" />
@@ -2180,15 +2216,11 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <End Role="caracteristica" Type="Self.caracteristica" Multiplicity="*" />
           <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="*" />
         </Association>
-        <Association Name="thabitacion_cama">
-          <End Role="cama" Type="Self.cama" Multiplicity="*" />
-          <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="*" />
-        </Association>
         <Association Name="Usuario_Permisos_Adi">
           <End Role="Permisos_Adi" Type="Self.Permisos_Adi" Multiplicity="*" />
           <End Role="Usuario" Type="Self.Usuario" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="hoteleriaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="hotelEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="alojamientoes" EntityType="Self.alojamiento" />
           <EntitySet Name="camas" EntityType="Self.cama" />
           <EntitySet Name="cancelacions" EntityType="Self.cancelacion" />
@@ -2219,6 +2251,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <EntitySet Name="TELEFONOes" EntityType="Self.TELEFONO" />
           <EntitySet Name="TEMPORADAs" EntityType="Self.TEMPORADA" />
           <EntitySet Name="Terceroes" EntityType="Self.Tercero" />
+          <EntitySet Name="thabitacion_cama" EntityType="Self.thabitacion_cama" />
           <EntitySet Name="tipo_alojamiento" EntityType="Self.tipo_alojamiento" />
           <EntitySet Name="tipo_archivo" EntityType="Self.tipo_archivo" />
           <EntitySet Name="TIPO_CLIENTE" EntityType="Self.TIPO_CLIENTE" />
@@ -2232,6 +2265,10 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
           <AssociationSet Name="FK_reserv_aloj" Association="Self.FK_reserv_aloj">
             <End Role="reservacion" EntitySet="reservacions" />
             <End Role="alojamiento" EntitySet="alojamientoes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_cama_thc" Association="Self.FK_cama_thc">
+            <End Role="cama" EntitySet="camas" />
+            <End Role="thabitacion_cama" EntitySet="thabitacion_cama" />
           </AssociationSet>
           <AssociationSet Name="FK_reserv_canc" Association="Self.FK_reserv_canc">
             <End Role="reservacion" EntitySet="reservacions" />
@@ -2361,6 +2398,10 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             <End Role="Tercero" EntitySet="Terceroes" />
             <End Role="Usuario" EntitySet="Usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_thabitacion_thc" Association="Self.FK_thabitacion_thc">
+            <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+            <End Role="thabitacion_cama" EntitySet="thabitacion_cama" />
+          </AssociationSet>
           <AssociationSet Name="FK_tipo_archivo" Association="Self.FK_tipo_archivo">
             <End Role="tipo_archivo" EntitySet="tipo_archivo" />
             <End Role="archivo" EntitySet="archivoes" />
@@ -2381,10 +2422,6 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             <End Role="caracteristica" EntitySet="caracteristicas" />
             <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
           </AssociationSet>
-          <AssociationSet Name="thabitacion_cama" Association="Self.thabitacion_cama">
-            <End Role="cama" EntitySet="camas" />
-            <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
-          </AssociationSet>
           <AssociationSet Name="Usuario_Permisos_Adi" Association="Self.Usuario_Permisos_Adi">
             <End Role="Permisos_Adi" EntitySet="Permisos_Adi" />
             <End Role="Usuario" EntitySet="Usuarios" />
@@ -2395,9 +2432,9 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="hoteleriaModelStoreContainer" CdmEntityContainer="hoteleriaEntities">
+        <EntityContainerMapping StorageEntityContainer="hotelModelStoreContainer" CdmEntityContainer="hotelEntities">
           <EntitySetMapping Name="alojamientoes">
-            <EntityTypeMapping TypeName="hoteleriaModel.alojamiento">
+            <EntityTypeMapping TypeName="hotelModel.alojamiento">
               <MappingFragment StoreEntitySet="alojamiento">
                 <ScalarProperty Name="id_alojamiento" ColumnName="id_alojamiento" />
                 <ScalarProperty Name="id_reserv_alojamiento" ColumnName="id_reserv_alojamiento" />
@@ -2410,7 +2447,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="camas">
-            <EntityTypeMapping TypeName="hoteleriaModel.cama">
+            <EntityTypeMapping TypeName="hotelModel.cama">
               <MappingFragment StoreEntitySet="cama">
                 <ScalarProperty Name="id_cama" ColumnName="id_cama" />
                 <ScalarProperty Name="descr_cama" ColumnName="descr_cama" />
@@ -2420,7 +2457,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="cancelacions">
-            <EntityTypeMapping TypeName="hoteleriaModel.cancelacion">
+            <EntityTypeMapping TypeName="hotelModel.cancelacion">
               <MappingFragment StoreEntitySet="cancelacion">
                 <ScalarProperty Name="id_cancelacion" ColumnName="id_cancelacion" />
                 <ScalarProperty Name="id_reserv_cancelacion" ColumnName="id_reserv_cancelacion" />
@@ -2434,7 +2471,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="caracteristicas">
-            <EntityTypeMapping TypeName="hoteleriaModel.caracteristica">
+            <EntityTypeMapping TypeName="hotelModel.caracteristica">
               <MappingFragment StoreEntitySet="caracteristica">
                 <ScalarProperty Name="id_caracteristica" ColumnName="id_caracteristica" />
                 <ScalarProperty Name="descr_caracteristica" ColumnName="descr_caracteristica" />
@@ -2443,7 +2480,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CLIENTEs">
-            <EntityTypeMapping TypeName="hoteleriaModel.CLIENTE">
+            <EntityTypeMapping TypeName="hotelModel.CLIENTE">
               <MappingFragment StoreEntitySet="CLIENTE">
                 <ScalarProperty Name="ID_CLIENTE" ColumnName="ID_CLIENTE" />
                 <ScalarProperty Name="ID_TERCERO_CLIENTE" ColumnName="ID_TERCERO_CLIENTE" />
@@ -2455,7 +2492,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DIRECCIONs">
-            <EntityTypeMapping TypeName="hoteleriaModel.DIRECCION">
+            <EntityTypeMapping TypeName="hotelModel.DIRECCION">
               <MappingFragment StoreEntitySet="DIRECCION">
                 <ScalarProperty Name="id_Tercero_Direccion" ColumnName="id_Tercero_Direccion" />
                 <ScalarProperty Name="id_mun_Direccion" ColumnName="id_mun_Direccion" />
@@ -2467,7 +2504,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="edificios">
-            <EntityTypeMapping TypeName="hoteleriaModel.edificio">
+            <EntityTypeMapping TypeName="hotelModel.edificio">
               <MappingFragment StoreEntitySet="edificio">
                 <ScalarProperty Name="id_edificio" ColumnName="id_edificio" />
                 <ScalarProperty Name="descr_edificio" ColumnName="descr_edificio" />
@@ -2477,7 +2514,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMAILs">
-            <EntityTypeMapping TypeName="hoteleriaModel.EMAIL">
+            <EntityTypeMapping TypeName="hotelModel.EMAIL">
               <MappingFragment StoreEntitySet="EMAIL">
                 <ScalarProperty Name="id_Tercero_Email" ColumnName="id_Tercero_Email" />
                 <ScalarProperty Name="Email1" ColumnName="Email" />
@@ -2488,7 +2525,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="EMPLEADOes">
-            <EntityTypeMapping TypeName="hoteleriaModel.EMPLEADO">
+            <EntityTypeMapping TypeName="hotelModel.EMPLEADO">
               <MappingFragment StoreEntitySet="EMPLEADO">
                 <ScalarProperty Name="ID_EMPLEADO" ColumnName="ID_EMPLEADO" />
                 <ScalarProperty Name="ID_TERCERO_EMPLEADO" ColumnName="ID_TERCERO_EMPLEADO" />
@@ -2499,7 +2536,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="habitacions">
-            <EntityTypeMapping TypeName="hoteleriaModel.habitacion">
+            <EntityTypeMapping TypeName="hotelModel.habitacion">
               <MappingFragment StoreEntitySet="habitacion">
                 <ScalarProperty Name="id_habitacion" ColumnName="id_habitacion" />
                 <ScalarProperty Name="descr_habitacion" ColumnName="descr_habitacion" />
@@ -2511,7 +2548,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HOTELs">
-            <EntityTypeMapping TypeName="hoteleriaModel.HOTEL">
+            <EntityTypeMapping TypeName="hotelModel.HOTEL">
               <MappingFragment StoreEntitySet="HOTEL">
                 <ScalarProperty Name="id_hotel" ColumnName="id_hotel" />
                 <ScalarProperty Name="descr_hotel" ColumnName="descr_hotel" />
@@ -2522,7 +2559,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mantenimientoes">
-            <EntityTypeMapping TypeName="hoteleriaModel.mantenimiento">
+            <EntityTypeMapping TypeName="hotelModel.mantenimiento">
               <MappingFragment StoreEntitySet="mantenimiento">
                 <ScalarProperty Name="id_mantenimiento" ColumnName="id_mantenimiento" />
                 <ScalarProperty Name="id_hab_mantenimiento" ColumnName="id_hab_mantenimiento" />
@@ -2533,7 +2570,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="mantenimiento_det">
-            <EntityTypeMapping TypeName="hoteleriaModel.mantenimiento_det">
+            <EntityTypeMapping TypeName="hotelModel.mantenimiento_det">
               <MappingFragment StoreEntitySet="mantenimiento_det">
                 <ScalarProperty Name="id_mantenimiento_det" ColumnName="id_mantenimiento_det" />
                 <ScalarProperty Name="id_t_mant_det" ColumnName="id_t_mant_det" />
@@ -2543,7 +2580,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="MUNICIPIOs">
-            <EntityTypeMapping TypeName="hoteleriaModel.MUNICIPIO">
+            <EntityTypeMapping TypeName="hotelModel.MUNICIPIO">
               <MappingFragment StoreEntitySet="MUNICIPIO">
                 <ScalarProperty Name="id_municipio" ColumnName="id_municipio" />
                 <ScalarProperty Name="descr_municipio" ColumnName="descr_municipio" />
@@ -2553,7 +2590,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NOTA_CREDITO_ABONO">
-            <EntityTypeMapping TypeName="hoteleriaModel.NOTA_CREDITO_ABONO">
+            <EntityTypeMapping TypeName="hotelModel.NOTA_CREDITO_ABONO">
               <MappingFragment StoreEntitySet="NOTA_CREDITO_ABONO">
                 <ScalarProperty Name="ID_NCC_AB" ColumnName="ID_NCC_AB" />
                 <ScalarProperty Name="ID_RESERV_NCC_AB" ColumnName="ID_RESERV_NCC_AB" />
@@ -2566,7 +2603,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NOTA_CREDITO_CLIENTE">
-            <EntityTypeMapping TypeName="hoteleriaModel.NOTA_CREDITO_CLIENTE">
+            <EntityTypeMapping TypeName="hotelModel.NOTA_CREDITO_CLIENTE">
               <MappingFragment StoreEntitySet="NOTA_CREDITO_CLIENTE">
                 <ScalarProperty Name="ID_NCC" ColumnName="ID_NCC" />
                 <ScalarProperty Name="ID_CLIENTE_NCC" ColumnName="ID_CLIENTE_NCC" />
@@ -2581,7 +2618,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NOTA_CREDITO_DETALLE">
-            <EntityTypeMapping TypeName="hoteleriaModel.NOTA_CREDITO_DETALLE">
+            <EntityTypeMapping TypeName="hotelModel.NOTA_CREDITO_DETALLE">
               <MappingFragment StoreEntitySet="NOTA_CREDITO_DETALLE">
                 <ScalarProperty Name="ID_NCC_DET" ColumnName="ID_NCC_DET" />
                 <ScalarProperty Name="ID_RESERV_NCC_DET" ColumnName="ID_RESERV_NCC_DET" />
@@ -2592,7 +2629,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ofertas">
-            <EntityTypeMapping TypeName="hoteleriaModel.Oferta">
+            <EntityTypeMapping TypeName="hotelModel.Oferta">
               <MappingFragment StoreEntitySet="Oferta">
                 <ScalarProperty Name="id_oferta" ColumnName="id_oferta" />
                 <ScalarProperty Name="descr_oferta" ColumnName="descr_oferta" />
@@ -2602,7 +2639,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="oferta_det_01">
-            <EntityTypeMapping TypeName="hoteleriaModel.oferta_det_01">
+            <EntityTypeMapping TypeName="hotelModel.oferta_det_01">
               <MappingFragment StoreEntitySet="oferta_det_01">
                 <ScalarProperty Name="id_oferta_det01" ColumnName="id_oferta_det01" />
                 <ScalarProperty Name="id_t_aloj_det01" ColumnName="id_t_aloj_det01" />
@@ -2611,7 +2648,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="oferta_det_02">
-            <EntityTypeMapping TypeName="hoteleriaModel.oferta_det_02">
+            <EntityTypeMapping TypeName="hotelModel.oferta_det_02">
               <MappingFragment StoreEntitySet="oferta_det_02">
                 <ScalarProperty Name="id_oferta_det02" ColumnName="id_oferta_det02" />
                 <ScalarProperty Name="id_t_cliente_det02" ColumnName="id_t_cliente_det02" />
@@ -2620,7 +2657,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="oferta_det_03">
-            <EntityTypeMapping TypeName="hoteleriaModel.oferta_det_03">
+            <EntityTypeMapping TypeName="hotelModel.oferta_det_03">
               <MappingFragment StoreEntitySet="oferta_det_03">
                 <ScalarProperty Name="id_oferta_det03" ColumnName="id_oferta_det03" />
                 <ScalarProperty Name="c_ini_aloj_det03" ColumnName="c_ini_aloj_det03" />
@@ -2630,7 +2667,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PAIS">
-            <EntityTypeMapping TypeName="hoteleriaModel.PAI">
+            <EntityTypeMapping TypeName="hotelModel.PAI">
               <MappingFragment StoreEntitySet="PAIS">
                 <ScalarProperty Name="id_pais" ColumnName="id_pais" />
                 <ScalarProperty Name="descr_pais" ColumnName="descr_pais" />
@@ -2639,7 +2676,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Permisos_Adi">
-            <EntityTypeMapping TypeName="hoteleriaModel.Permisos_Adi">
+            <EntityTypeMapping TypeName="hotelModel.Permisos_Adi">
               <MappingFragment StoreEntitySet="Permisos_Adi">
                 <ScalarProperty Name="id_opcion" ColumnName="id_opcion" />
                 <ScalarProperty Name="Descr_opcion" ColumnName="Descr_opcion" />
@@ -2648,7 +2685,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PROVINCIAs">
-            <EntityTypeMapping TypeName="hoteleriaModel.PROVINCIA">
+            <EntityTypeMapping TypeName="hotelModel.PROVINCIA">
               <MappingFragment StoreEntitySet="PROVINCIA">
                 <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
                 <ScalarProperty Name="descr_provincia" ColumnName="descr_provincia" />
@@ -2658,7 +2695,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="reservacions">
-            <EntityTypeMapping TypeName="hoteleriaModel.reservacion">
+            <EntityTypeMapping TypeName="hotelModel.reservacion">
               <MappingFragment StoreEntitySet="reservacion">
                 <ScalarProperty Name="id_reservacion" ColumnName="id_reservacion" />
                 <ScalarProperty Name="id_cliente" ColumnName="id_cliente" />
@@ -2675,7 +2712,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="reservacion_det">
-            <EntityTypeMapping TypeName="hoteleriaModel.reservacion_det">
+            <EntityTypeMapping TypeName="hotelModel.reservacion_det">
               <MappingFragment StoreEntitySet="reservacion_det">
                 <ScalarProperty Name="id_reservacion_det" ColumnName="id_reservacion_det" />
                 <ScalarProperty Name="id_thab_reserv_det" ColumnName="id_thab_reserv_det" />
@@ -2684,7 +2721,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="servicios">
-            <EntityTypeMapping TypeName="hoteleriaModel.servicio">
+            <EntityTypeMapping TypeName="hotelModel.servicio">
               <MappingFragment StoreEntitySet="servicio">
                 <ScalarProperty Name="id_servicio" ColumnName="id_servicio" />
                 <ScalarProperty Name="descr_servicio" ColumnName="descr_servicio" />
@@ -2694,7 +2731,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TELEFONOes">
-            <EntityTypeMapping TypeName="hoteleriaModel.TELEFONO">
+            <EntityTypeMapping TypeName="hotelModel.TELEFONO">
               <MappingFragment StoreEntitySet="TELEFONO">
                 <ScalarProperty Name="id_Tercero_Tel" ColumnName="id_Tercero_Tel" />
                 <ScalarProperty Name="Numero_Tel" ColumnName="Numero_Tel" />
@@ -2705,7 +2742,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TEMPORADAs">
-            <EntityTypeMapping TypeName="hoteleriaModel.TEMPORADA">
+            <EntityTypeMapping TypeName="hotelModel.TEMPORADA">
               <MappingFragment StoreEntitySet="TEMPORADA">
                 <ScalarProperty Name="id_temporada" ColumnName="id_temporada" />
                 <ScalarProperty Name="descr_temporada" ColumnName="descr_temporada" />
@@ -2716,7 +2753,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Terceroes">
-            <EntityTypeMapping TypeName="hoteleriaModel.Tercero">
+            <EntityTypeMapping TypeName="hotelModel.Tercero">
               <MappingFragment StoreEntitySet="Tercero">
                 <ScalarProperty Name="id_Tercero" ColumnName="id_Tercero" />
                 <ScalarProperty Name="Nombre_Tercero" ColumnName="Nombre_Tercero" />
@@ -2728,8 +2765,17 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="thabitacion_cama">
+            <EntityTypeMapping TypeName="hotelModel.thabitacion_cama">
+              <MappingFragment StoreEntitySet="thabitacion_cama">
+                <ScalarProperty Name="id_t_hab_thc" ColumnName="id_t_hab_thc" />
+                <ScalarProperty Name="id_cama_thc" ColumnName="id_cama_thc" />
+                <ScalarProperty Name="Cantidad_camas" ColumnName="Cantidad_camas" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tipo_alojamiento">
-            <EntityTypeMapping TypeName="hoteleriaModel.tipo_alojamiento">
+            <EntityTypeMapping TypeName="hotelModel.tipo_alojamiento">
               <MappingFragment StoreEntitySet="tipo_alojamiento">
                 <ScalarProperty Name="id_t_alojamiento" ColumnName="id_t_alojamiento" />
                 <ScalarProperty Name="descr_t_alojamiento" ColumnName="descr_t_alojamiento" />
@@ -2739,7 +2785,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tipo_archivo">
-            <EntityTypeMapping TypeName="hoteleriaModel.tipo_archivo">
+            <EntityTypeMapping TypeName="hotelModel.tipo_archivo">
               <MappingFragment StoreEntitySet="tipo_archivo">
                 <ScalarProperty Name="id_t_archivo" ColumnName="id_t_archivo" />
                 <ScalarProperty Name="descr_t_archivo" ColumnName="descr_t_archivo" />
@@ -2748,7 +2794,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_CLIENTE">
-            <EntityTypeMapping TypeName="hoteleriaModel.TIPO_CLIENTE">
+            <EntityTypeMapping TypeName="hotelModel.TIPO_CLIENTE">
               <MappingFragment StoreEntitySet="TIPO_CLIENTE">
                 <ScalarProperty Name="ID_T_CLIENTE_TC" ColumnName="ID_T_CLIENTE_TC" />
                 <ScalarProperty Name="DESCR_TC" ColumnName="DESCR_TC" />
@@ -2757,7 +2803,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_EMPLEADO">
-            <EntityTypeMapping TypeName="hoteleriaModel.TIPO_EMPLEADO">
+            <EntityTypeMapping TypeName="hotelModel.TIPO_EMPLEADO">
               <MappingFragment StoreEntitySet="TIPO_EMPLEADO">
                 <ScalarProperty Name="ID_T_EMPLEADO_TE" ColumnName="ID_T_EMPLEADO_TE" />
                 <ScalarProperty Name="DESCR_TE" ColumnName="DESCR_TE" />
@@ -2766,7 +2812,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tipo_habitacion">
-            <EntityTypeMapping TypeName="hoteleriaModel.tipo_habitacion">
+            <EntityTypeMapping TypeName="hotelModel.tipo_habitacion">
               <MappingFragment StoreEntitySet="tipo_habitacion">
                 <ScalarProperty Name="id_t_hab" ColumnName="id_t_hab" />
                 <ScalarProperty Name="descr_t_hab" ColumnName="descr_t_hab" />
@@ -2777,7 +2823,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipo_Identificacion">
-            <EntityTypeMapping TypeName="hoteleriaModel.Tipo_Identificacion">
+            <EntityTypeMapping TypeName="hotelModel.Tipo_Identificacion">
               <MappingFragment StoreEntitySet="Tipo_Identificacion">
                 <ScalarProperty Name="Id_Tipo_Ident" ColumnName="Id_Tipo_Ident" />
                 <ScalarProperty Name="Descr_Tipo_Ident" ColumnName="Descr_Tipo_Ident" />
@@ -2786,7 +2832,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tipo_mantenimiento">
-            <EntityTypeMapping TypeName="hoteleriaModel.tipo_mantenimiento">
+            <EntityTypeMapping TypeName="hotelModel.tipo_mantenimiento">
               <MappingFragment StoreEntitySet="tipo_mantenimiento">
                 <ScalarProperty Name="id_t_mantenimiento" ColumnName="id_t_mantenimiento" />
                 <ScalarProperty Name="descr_t_mantenimiento" ColumnName="descr_t_mantenimiento" />
@@ -2795,7 +2841,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipo_Usuario">
-            <EntityTypeMapping TypeName="hoteleriaModel.Tipo_Usuario">
+            <EntityTypeMapping TypeName="hotelModel.Tipo_Usuario">
               <MappingFragment StoreEntitySet="Tipo_Usuario">
                 <ScalarProperty Name="id_T_Usuario" ColumnName="id_T_Usuario" />
                 <ScalarProperty Name="Descripcion_T_Usuario" ColumnName="Descripcion_T_Usuario" />
@@ -2805,7 +2851,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuarios">
-            <EntityTypeMapping TypeName="hoteleriaModel.Usuario">
+            <EntityTypeMapping TypeName="hotelModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="id_Usuario" ColumnName="id_Usuario" />
                 <ScalarProperty Name="id_Tercero_Usuario" ColumnName="id_Tercero_Usuario" />
@@ -2816,7 +2862,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="archivoes">
-            <EntityTypeMapping TypeName="hoteleriaModel.archivo">
+            <EntityTypeMapping TypeName="hotelModel.archivo">
               <MappingFragment StoreEntitySet="archivo">
                 <ScalarProperty Name="id_archivo" ColumnName="id_archivo" />
                 <ScalarProperty Name="id_tarchivo" ColumnName="id_tarchivo" />
@@ -2831,7 +2877,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="alojamiento_det" TypeName="hoteleriaModel.alojamiento_det" StoreEntitySet="alojamiento_det">
+          <AssociationSetMapping Name="alojamiento_det" TypeName="hotelModel.alojamiento_det" StoreEntitySet="alojamiento_det">
             <EndProperty Name="alojamiento">
               <ScalarProperty Name="id_alojamiento" ColumnName="id_alojamiento_det" />
             </EndProperty>
@@ -2839,7 +2885,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
               <ScalarProperty Name="id_habitacion" ColumnName="id_hab_det" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="talojamiento_servicio" TypeName="hoteleriaModel.talojamiento_servicio" StoreEntitySet="talojamiento_servicio">
+          <AssociationSetMapping Name="talojamiento_servicio" TypeName="hotelModel.talojamiento_servicio" StoreEntitySet="talojamiento_servicio">
             <EndProperty Name="tipo_alojamiento">
               <ScalarProperty Name="id_t_alojamiento" ColumnName="id_t_alojamiento_tas" />
             </EndProperty>
@@ -2847,7 +2893,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
               <ScalarProperty Name="id_servicio" ColumnName="id_servicio_tas" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="thab_caracteristica" TypeName="hoteleriaModel.thab_caracteristica" StoreEntitySet="thab_caracteristica">
+          <AssociationSetMapping Name="thab_caracteristica" TypeName="hotelModel.thab_caracteristica" StoreEntitySet="thab_caracteristica">
             <EndProperty Name="caracteristica">
               <ScalarProperty Name="id_caracteristica" ColumnName="id_caracteristica_thcar" />
             </EndProperty>
@@ -2855,15 +2901,7 @@ advertencia 6002: La tabla o vista 'hoteleria.dbo.archivo' no tiene definida nin
               <ScalarProperty Name="id_t_hab" ColumnName="id_t_hab_thcar" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="thabitacion_cama" TypeName="hoteleriaModel.thabitacion_cama" StoreEntitySet="thabitacion_cama">
-            <EndProperty Name="cama">
-              <ScalarProperty Name="id_cama" ColumnName="id_cama_thc" />
-            </EndProperty>
-            <EndProperty Name="tipo_habitacion">
-              <ScalarProperty Name="id_t_hab" ColumnName="id_t_hab_thc" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="Usuario_Permisos_Adi" TypeName="hoteleriaModel.Usuario_Permisos_Adi" StoreEntitySet="Usuario_Permisos_Adi">
+          <AssociationSetMapping Name="Usuario_Permisos_Adi" TypeName="hotelModel.Usuario_Permisos_Adi" StoreEntitySet="Usuario_Permisos_Adi">
             <EndProperty Name="Permisos_Adi">
               <ScalarProperty Name="id_opcion" ColumnName="id_Permiso_UP" />
             </EndProperty>

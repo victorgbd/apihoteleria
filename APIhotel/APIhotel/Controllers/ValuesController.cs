@@ -13,7 +13,7 @@ namespace APIhotel.Controllers
         public IEnumerable<Models.Hotel.Tipo_Usuario> Get()
         {
             IEnumerable<Models.Hotel.Tipo_Usuario> rq;
-            using (Models.Hotel.hoteleriaEntities db = new Models.Hotel.hoteleriaEntities())
+            using (Models.Hotel.hotelEntities db = new Models.Hotel.hotelEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 rq = db.Tipo_Usuario.ToList();
@@ -22,10 +22,10 @@ namespace APIhotel.Controllers
         }
 
         // GET api/values?id1=2&id2=2
-        public IEnumerable<Models.Hotel.Tipo_Usuario> Get(int id1)
+        public IEnumerable<Models.Hotel.Tipo_Usuario> Get(string id1)
         {
             IEnumerable<Models.Hotel.Tipo_Usuario> rq;
-            using (Models.Hotel.hoteleriaEntities db = new Models.Hotel.hoteleriaEntities())
+            using (Models.Hotel.hotelEntities db = new Models.Hotel.hotelEntities())
             {
                 db.Configuration.LazyLoadingEnabled = false;
                 rq = db.Tipo_Usuario.Where(s=>s.id_T_Usuario==id1).ToList();

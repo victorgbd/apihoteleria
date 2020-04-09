@@ -13,10 +13,10 @@ namespace APIhotel.Models.Hotel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class hoteleriaEntities : DbContext
+    public partial class hotelEntities : DbContext
     {
-        public hoteleriaEntities()
-            : base("name=hoteleriaEntities")
+        public hotelEntities()
+            : base("name=hotelEntities")
         {
         }
     
@@ -55,6 +55,7 @@ namespace APIhotel.Models.Hotel
         public virtual DbSet<TELEFONO> TELEFONOes { get; set; }
         public virtual DbSet<TEMPORADA> TEMPORADAs { get; set; }
         public virtual DbSet<Tercero> Terceroes { get; set; }
+        public virtual DbSet<thabitacion_cama> thabitacion_cama { get; set; }
         public virtual DbSet<tipo_alojamiento> tipo_alojamiento { get; set; }
         public virtual DbSet<tipo_archivo> tipo_archivo { get; set; }
         public virtual DbSet<TIPO_CLIENTE> TIPO_CLIENTE { get; set; }

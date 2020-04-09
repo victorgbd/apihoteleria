@@ -22,7 +22,7 @@ namespace APIhotel.Models.Hotel
     
         public string id_Usuario { get; set; }
         public string id_Tercero_Usuario { get; set; }
-        public int Tipo_Usuario { get; set; }
+        public string Tipo_Usuario { get; set; }
         public string password_Usuario { get; set; }
         public string Estado_Usuario { get; set; }
     

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="99fccd6b8f344233bc3c2f5b86c9d355" Name="Diagram1">
+        <EntityTypeShape EntityType="hotelModel.alojamiento" Width="1.5" PointX="12.75" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.cama" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.cancelacion" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.caracteristica" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.CLIENTE" Width="1.5" PointX="5.25" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.DIRECCION" Width="1.5" PointX="8.25" PointY="19" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.edificio" Width="1.5" PointX="12.75" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.EMAIL" Width="1.5" PointX="5.25" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.EMPLEADO" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.habitacion" Width="1.5" PointX="15" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.HOTEL" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.mantenimiento" Width="1.5" PointX="17.25" PointY="14.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.mantenimiento_det" Width="1.5" PointX="19.5" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.MUNICIPIO" Width="1.5" PointX="6" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.NOTA_CREDITO_ABONO" Width="1.5" PointX="12.75" PointY="21" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.NOTA_CREDITO_CLIENTE" Width="1.5" PointX="7.5" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.NOTA_CREDITO_DETALLE" Width="1.5" PointX="12.75" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Oferta" Width="1.5" PointX="17" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.oferta_det_01" Width="1.5" PointX="19.25" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.oferta_det_02" Width="1.5" PointX="20.25" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.oferta_det_03" Width="1.5" PointX="19.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.PAI" Width="1.5" PointX="1.5" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Permisos_Adi" Width="1.5" PointX="6" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.PROVINCIA" Width="1.5" PointX="3.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.reservacion" Width="1.5" PointX="10.5" PointY="18" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.reservacion_det" Width="1.5" PointX="15.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.servicio" Width="1.5" PointX="10.5" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.TELEFONO" Width="1.5" PointX="5.25" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.TEMPORADA" Width="1.5" PointX="14.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Tercero" Width="1.5" PointX="3" PointY="18.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.thabitacion_cama" Width="1.5" PointX="15" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.tipo_alojamiento" Width="1.5" PointX="8.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.tipo_archivo" Width="1.5" PointX="17.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.TIPO_CLIENTE" Width="1.5" PointX="3" PointY="23.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.TIPO_EMPLEADO" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.tipo_habitacion" Width="1.5" PointX="12.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Tipo_Identificacion" Width="1.5" PointX="0.75" PointY="19.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.tipo_mantenimiento" Width="1.5" PointX="17.25" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Tipo_Usuario" Width="1.5" PointX="6" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.Usuario" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
+        <EntityTypeShape EntityType="hotelModel.archivo" Width="1.5" PointX="20" PointY="18.25" IsExpanded="true" />
+        <AssociationConnector Association="hotelModel.FK_reserv_aloj" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_cama_thc" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_reserv_canc" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_CLIENTE_NCC" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_cliente_res" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_T_CLIENTE_TC" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_CLIENTE" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_MUNICIPIO_Direccion" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_Direccion" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_edificio_hab" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_Email" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_EMPLEADO_mant_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_T_EMPLEADO_TE" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_EMPLEADO" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_habitacion_mant" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_thabitacion_hab" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_mant_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_tipo_mant_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_MUNICIPIO_PROV" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_RESERV_NCC_AB" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_RESERV_NCC_DET" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_oferta_d01" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_oferta_d02" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_oferta_d03" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_temporada_oferta" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_talojamiento_of_det01" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_t_cliente_det02" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_PROVINCIA_PAIS" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_reserv_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_talojamiento_res" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_thab_reserv_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_Tel" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Tercero_T_Identif" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Usuario_Tercero" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_thabitacion_thc" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_tipo_archivo" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.FK_Usuario_Tipo_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.alojamiento_det" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.talojamiento_servicio" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.thab_caracteristica" ManuallyRouted="false" />
+        <AssociationConnector Association="hotelModel.Usuario_Permisos_Adi" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

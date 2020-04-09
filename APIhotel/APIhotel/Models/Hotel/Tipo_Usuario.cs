@@ -20,7 +20,7 @@ namespace APIhotel.Models.Hotel
             this.Usuarios = new HashSet<Usuario>();
         }
     
-        public int id_T_Usuario { get; set; }
+        public string id_T_Usuario { get; set; }
         public string Descripcion_T_Usuario { get; set; }
         public string Nivel_Acceso_T_Usuario { get; set; }
         public string Estado_T_Usuario { get; set; }

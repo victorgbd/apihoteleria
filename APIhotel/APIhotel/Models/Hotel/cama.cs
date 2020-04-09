@@ -17,7 +17,7 @@ namespace APIhotel.Models.Hotel
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public cama()
         {
-            this.tipo_habitacion = new HashSet<tipo_habitacion>();
+            this.thabitacion_cama = new HashSet<thabitacion_cama>();
         }
     
         public string id_cama { get; set; }
@@ -26,6 +26,6 @@ namespace APIhotel.Models.Hotel
         public string estado_cama { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tipo_habitacion> tipo_habitacion { get; set; }
+        public virtual ICollection<thabitacion_cama> thabitacion_cama { get; set; }
     }
 }

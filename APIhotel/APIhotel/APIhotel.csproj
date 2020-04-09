@@ -201,139 +201,142 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\alojamiento.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\archivo.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\cama.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\cancelacion.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\caracteristica.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\CLIENTE.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\DIRECCION.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\edificio.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\EMAIL.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\EMPLEADO.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\habitacion.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\HOTEL.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hotel\HotelDB.Context.cs">
+    <Compile Include="Models\Hotel\HotelDBmodel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.Context.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hotel\HotelDB.cs">
+    <Compile Include="Models\Hotel\HotelDBmodel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Hotel\HotelDB.Designer.cs">
+    <Compile Include="Models\Hotel\HotelDBmodel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>HotelDB.edmx</DependentUpon>
+      <DependentUpon>HotelDBmodel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\mantenimiento.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\mantenimiento_det.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\MUNICIPIO.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\NOTA_CREDITO_ABONO.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\NOTA_CREDITO_CLIENTE.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\NOTA_CREDITO_DETALLE.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Oferta.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\oferta_det_01.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\oferta_det_02.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\oferta_det_03.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\PAI.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Permisos_Adi.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\PROVINCIA.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\reservacion.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\reservacion_det.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\servicio.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\TELEFONO.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\TEMPORADA.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Tercero.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Hotel\thabitacion_cama.cs">
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\tipo_alojamiento.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\tipo_archivo.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\TIPO_CLIENTE.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\TIPO_EMPLEADO.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\tipo_habitacion.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Tipo_Identificacion.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\tipo_mantenimiento.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Tipo_Usuario.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Hotel\Usuario.cs">
-      <DependentUpon>HotelDB.tt</DependentUpon>
+      <DependentUpon>HotelDBmodel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -344,15 +347,15 @@
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Models\Hotel\HotelDB.Context.tt">
+    <Content Include="Models\Hotel\HotelDBmodel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelDB.edmx</DependentUpon>
-      <LastGenOutput>HotelDB.Context.cs</LastGenOutput>
+      <DependentUpon>HotelDBmodel.edmx</DependentUpon>
+      <LastGenOutput>HotelDBmodel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\Hotel\HotelDB.tt">
+    <Content Include="Models\Hotel\HotelDBmodel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HotelDB.edmx</DependentUpon>
-      <LastGenOutput>HotelDB.cs</LastGenOutput>
+      <DependentUpon>HotelDBmodel.edmx</DependentUpon>
+      <LastGenOutput>HotelDBmodel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
@@ -380,12 +383,12 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <EntityDeploy Include="Models\Hotel\HotelDB.edmx">
+    <EntityDeploy Include="Models\Hotel\HotelDBmodel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>HotelDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>HotelDBmodel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\Hotel\HotelDB.edmx.diagram">
-      <DependentUpon>HotelDB.edmx</DependentUpon>
+    <Content Include="Models\Hotel\HotelDBmodel.edmx.diagram">
+      <DependentUpon>HotelDBmodel.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
