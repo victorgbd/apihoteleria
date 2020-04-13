@@ -1,0 +1,2 @@
+copiar en R interactive
+rtvs::debug_source("~/visual studio 2015/Projects/RGraph/script.R")
